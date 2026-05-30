@@ -202,7 +202,7 @@ export function ServiceRecords() {
       <CircuitBackground />
 
       <div className={`section-reveal${visible ? " visible" : ""}`} style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel>SERVICE_RECORD</SectionLabel>
+        <SectionLabel>EXPERIENCE and VOLUNTEERING</SectionLabel>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {/* LUMS */}
@@ -237,7 +237,7 @@ export function ServiceRecords() {
               framing={`"Instructed operatives in Data Architecture and Query Optimization protocols for enterprise-grade database systems."`}
               bullets={[
                 "Led academic execution and technical instruction for Business Data Management — bridging theoretical data architectures with hands-on implementation",
-                "Managed a TA team, coordinating grading workflows and standardizing evaluation metrics for complex relational database assignments",
+                "Managed a TA team, coordinating grading workflows and standardizing evaluation metrics",
                 "Instructed in advanced relational modeling, schema design, and normalization techniques",
                 "Designed curriculum covering advanced SQL: recursive joins, outer joins, correlated subqueries",
                 "Delivered sessions on NoSQL structures, transactional integrity, and database security",
@@ -253,7 +253,6 @@ export function ServiceRecords() {
               bullets={[
                 "Directed academic support for the core CS Algorithms course — 300+ graduate and undergraduate students",
                 "Managed and mentored 8 Teaching Assistants, ensuring consistent grading standards across the cohort",
-                "Ran weekly tutorials on Dynamic Programming, Graph Theory, Greedy Algorithms, and Divide & Conquer",
                 "Mentored students in Big-O complexity analysis; directly prepared them for technical interviews and competitive programming",
                 "Streamlined assignment evaluation pipelines, cutting turnaround time without compromising academic integrity",
               ]}

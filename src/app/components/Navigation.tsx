@@ -3,20 +3,20 @@ import { Link, useLocation, useNavigate } from "react-router";
 
 const NAV_ITEMS = [
   { label: "> INITIALIZE",         path: "/"         },
-  { label: "> OPERATIVE_PROFILE",  path: "/profile"  },
+  { label: "> ABOUT ME",  path: "/profile"  },
   { label: "> CAPABILITY_MATRIX",  path: "/profile"  }, // same page as profile
-  { label: "> SERVICE_RECORD",     path: "/service"  },
-  { label: "> DATA_ARCHIVES",      path: "/projects" },
-  { label: "> OPEN_CHANNEL",       path: "/contact"  },
+  { label: "> EXPERIENCE and VOLUNTEERING",     path: "/service"  },
+  { label: "> PROJECTS",      path: "/projects" },
+  { label: "> CONTACT ME",       path: "/contact"  },
 ];
 
 // Deduplicate by path — show unique pages in nav
 const UNIQUE_NAV = [
   { label: "> INITIALIZE",         path: "/"         },
-  { label: "> OPERATIVE_PROFILE",  path: "/profile"  },
-  { label: "> SERVICE_RECORD",     path: "/service"  },
-  { label: "> DATA_ARCHIVES",      path: "/projects" },
-  { label: "> OPEN_CHANNEL",       path: "/contact"  },
+  { label: "> ABOUT ME",  path: "/profile"  },
+  { label: "> EXPERIENCE and VOLUNTEERING",     path: "/service"  },
+  { label: "> PROJECTS",      path: "/projects" },
+  { label: "> CONTACT ME",       path: "/contact"  },
 ];
 
 export function Navigation() {
@@ -51,7 +51,7 @@ export function Navigation() {
             onClick={() => navigate("/")}
             style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "'Orbitron', sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#ff2d78", textShadow: "0 0 8px #ff2d78, 0 0 20px #ff2d7844", letterSpacing: "0.06em" }}
           >
-            BARKI_M
+            MAAZ_BARKI
           </button>
 
           {/* Desktop links */}

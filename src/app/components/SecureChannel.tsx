@@ -151,7 +151,7 @@ export function SecureChannel() {
       <MatrixBackground />
 
       <div className={`section-reveal${visible ? " visible" : ""}`} style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel>OPEN_CHANNEL.exe</SectionLabel>
+        <SectionLabel>CONTACT_ME.exe</SectionLabel>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "start" }}>
           {/* Form */}

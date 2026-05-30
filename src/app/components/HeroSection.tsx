@@ -180,8 +180,8 @@ function HeroContent() {
       {/* CTAs */}
       <div style={{ display: "flex", justifyContent: "center", gap: "0.65rem", flexWrap: "wrap", marginBottom: "1.75rem" }}>
         {[
-          { label: "[ RUN DATA_ARCHIVES.exe ]", color: "#ff2d78", path: "/projects" },
-          { label: "[ OPEN_CHANNEL.exe ]",       color: "#00e5ff", path: "/contact"  },
+          { label: "[ RUN PROJECTS.exe ]", color: "#ff2d78", path: "/projects" },
+          { label: "[ CONTACT_ME.exe ]",       color: "#00e5ff", path: "/contact"  },
         ].map(btn => (
           <button
             key={btn.path}

@@ -112,7 +112,7 @@ export function OperativeProfile() {
         className={`section-reveal${visible ? " visible" : ""}`}
         style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto" }}
       >
-        <SectionLabel>OPERATIVE_PROFILE.exe</SectionLabel>
+        <SectionLabel>ABOUT_ME.exe</SectionLabel>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem", alignItems: "start" }}>
           {/* Left: data readout */}
@@ -157,8 +157,8 @@ export function OperativeProfile() {
 
             <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
               {[
-                { label: "[ RUN DATA_ARCHIVES.exe ]", color: "#ff2d78", path: "/projects" },
-                { label: "[ OPEN_CHANNEL.exe ]", color: "#00e5ff", path: "/contact" },
+                { label: "[ RUN PROJECTS.exe ]", color: "#ff2d78", path: "/projects" },
+                { label: "[ RUN CONTACT_ME.exe ]", color: "#00e5ff", path: "/contact" },
               ].map((btn) => (
                 <button
                   key={btn.path}

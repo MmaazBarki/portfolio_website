@@ -8,10 +8,10 @@ export const PAGE_SEQUENCE = ["/", "/profile", "/service", "/projects", "/contac
 
 export const PAGE_META: Record<string, { label: string; short: string }> = {
   "/":          { label: "INITIALIZE",       short: "HOME"     },
-  "/profile":   { label: "OPERATIVE_PROFILE",short: "PROFILE"  },
-  "/service":   { label: "SERVICE_RECORD",   short: "SERVICE"  },
-  "/projects":  { label: "DATA_ARCHIVES",    short: "PROJECTS" },
-  "/contact":   { label: "OPEN_CHANNEL",     short: "CONTACT"  },
+  "/profile":   { label: "ABOUT ME",short: "PROFILE"  },
+  "/service":   { label: "EXPERIENCE and VOLUNTEERING",   short: "SERVICE"  },
+  "/projects":  { label: "PROJECTS",    short: "PROJECTS" },
+  "/contact":   { label: "CONTACT ME",     short: "CONTACT"  },
 };
 
 /* ── Ambient CRT flicker ── */

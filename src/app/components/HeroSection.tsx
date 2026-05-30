@@ -11,7 +11,7 @@ import resumePdf from "../../imports/Resume.pdf?url";
 
 const BOOT_SEQUENCE = [
   { text: "> SYSTEM BOOT...............................................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
-  { text: "> LOADING OPERATIVE PROFILE: BARKI_M.......................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
+  { text: "> LOADING OPERATIVE PROFILE: MAAZ_BARKI.......................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
   { text: "> CLEARANCE LEVEL: DEAN'S HONOR LIST · OCT 2023............", suffix: "[ OK ]", suffixColor: "#00ff9f" },
   { text: "> WARNING: UNAUTHORIZED ACCESS DETECTED", suffix: "", suffixColor: "#ff2d78", color: "#ff2d78" },
   { text: "> ESTABLISHING SECURE CONNECTION...........................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
@@ -206,7 +206,7 @@ function HeroContent() {
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,255,159,0.1)"; }}
           onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
         >
-          ⬇ [ DOWNLOAD_RESUME.pdf ]
+          [ DOWNLOAD_RESUME.pdf ]
         </a>
       </div>
 

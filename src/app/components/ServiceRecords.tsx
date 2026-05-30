@@ -232,8 +232,8 @@ export function ServiceRecords() {
             </div>
 
             <ContractAccordion
-              title="Contract A — Business Data Management (DISC 325)"
-              date="January 2026 – Present"
+              title="Contract B — Business Data Management (DISC 325)"
+              date="January 2026 – May 2026"
               framing={`"Instructed operatives in Data Architecture and Query Optimization protocols for enterprise-grade database systems."`}
               bullets={[
                 "Led academic execution and technical instruction for Business Data Management — bridging theoretical data architectures with hands-on implementation",
@@ -247,7 +247,7 @@ export function ServiceRecords() {
             />
 
             <ContractAccordion
-              title="Contract B — Algorithms (CS-310)"
+              title="Contract A — Algorithms (CS-310)"
               date="August 2025 – December 2025"
               framing={`"Trained operatives in core decryption and processing paradigms — complexity analysis, algorithmic optimization, and adversarial problem-solving."`}
               bullets={[

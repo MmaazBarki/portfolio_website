@@ -146,8 +146,8 @@ const PROJECTS: Project[] = [
       "Selenium automated test suite covering authentication and submission flows",
     ],
     techBadges: ["MongoDB", "Express.js", "React.js", "Node.js", "Selenium", "Cloudinary", "Git", "REST APIs"],
-    githubUrl: "https://github.com/MmaazBarki",
-    liveUrl: "https://github.com/MmaazBarki",
+    githubUrl: "https://github.com/MmaazBarki/Lums-Information-Hub",
+    liveUrl: "https://lih-frontend.vercel.app/login",
     collaborators: [],
     coverImage: lihCover,
     coverAlt: "LUMS Information Hub — Full-Stack MERN Platform",
@@ -171,8 +171,8 @@ const PROJECTS: Project[] = [
       "Designed for underserved communities with language and literacy barriers",
     ],
     techBadges: ["Python", "LangChain", "Unsloth", "Transformers", "Sentence-Transformers", "BERTScore", "RAG", "NLP"],
-    githubUrl: "https://github.com/MmaazBarki",
-    liveUrl: "https://github.com/MmaazBarki",
+    githubUrl: "https://github.com/farazahmad2004/Roman-Urdu-Medical-LLM",
+    liveUrl: "",   // not deployed — hides the RUN CONSTRUCT button
     collaborators: [],
     coverImage: chatbotCover,
     coverAlt: "Roman-Urdu Medical Chatbot — Speech-to-Text AI Health Advisory",
@@ -275,8 +275,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", handleKey);
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", handleKey); document.body.style.overflow = ""; };
+    // Do NOT lock body scroll — the modal overlay handles its own scrolling
+    return () => { document.removeEventListener("keydown", handleKey); };
   }, [onClose]);
 
   return (
@@ -394,13 +394,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             >
               [ ACCESS ARCHIVE → GitHub ]
             </a>
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem", color: "#00ff9f", textDecoration: "none", border: "1px solid rgba(0,255,159,0.3)", padding: "0.55rem 1.1rem", background: "rgba(0,255,159,0.05)", letterSpacing: "0.04em", textShadow: "0 0 6px #00ff9f44", transition: "all 0.2s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,255,159,0.12)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,255,159,0.05)"; }}
-            >
-              [ RUN CONSTRUCT → Live ]
-            </a>
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem", color: "#00ff9f", textDecoration: "none", border: "1px solid rgba(0,255,159,0.3)", padding: "0.55rem 1.1rem", background: "rgba(0,255,159,0.05)", letterSpacing: "0.04em", textShadow: "0 0 6px #00ff9f44", transition: "all 0.2s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,255,159,0.12)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,255,159,0.05)"; }}
+              >
+                [ RUN CONSTRUCT → Live ]
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import resumePdf from "../../imports/Resume.pdf?url";
 const BOOT_SEQUENCE = [
   { text: "> SYSTEM BOOT...............................................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
   { text: "> LOADING OPERATIVE PROFILE: MAAZ_BARKI.......................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
-  { text: "> CLEARANCE LEVEL: UNKNOWN............", suffix: "[ OK ]", suffixColor: "#00ff9f" },
+  { text: "> CLEARANCE LEVEL: DEAN'S HONOR LIST · OCT 2023............", suffix: "[ OK ]", suffixColor: "#00ff9f" },
   { text: "> WARNING: UNAUTHORIZED ACCESS DETECTED", suffix: "", suffixColor: "#ff2d78", color: "#ff2d78" },
   { text: "> ESTABLISHING SECURE CONNECTION...........................", suffix: "[ OK ]", suffixColor: "#00ff9f" },
   { text: "> WELCOME, OPERATIVE.", suffix: "", suffixColor: "", color: "#00e5ff" },

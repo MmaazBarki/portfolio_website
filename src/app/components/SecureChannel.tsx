@@ -1,4 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+
+// ── EmailJS credentials ─────────────────────────────────────────────────────
+const EMAILJS_SERVICE_ID  = "service_47fxrxc";
+const EMAILJS_TEMPLATE_ID = "template_8mrrbcx";
+const EMAILJS_PUBLIC_KEY  = "vdUCZ4e85PydvSyvH";
+// ────────────────────────────────────────────────────────────────────────────
 
 /* ── Matrix rain background ── */
 function MatrixBackground() {
@@ -119,6 +126,7 @@ export function SecureChannel() {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [transmitting, setTransmitting] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [sessionToken] = useState(() => Math.random().toString(16).slice(2, 10).toUpperCase());
 
   useEffect(() => {
@@ -133,7 +141,28 @@ export function SecureChannel() {
     e.preventDefault();
     if (!name || !email || !message) return;
     setTransmitting(true);
-    setTimeout(() => { setTransmitting(false); setSubmitted(true); }, 1800);
+    setSendError(false);
+
+    const templateParams = {
+      from_name: name,
+      reply_to: email,
+      message: message,
+    };
+
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      .then(() => {
+        setTransmitting(false);
+        setSubmitted(true);
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        setTransmitting(false);
+        setSendError(true);
+      });
   };
 
   return (
@@ -161,6 +190,11 @@ export function SecureChannel() {
               <span style={{ color: "#00ff9f", textShadow: "0 0 8px #00ff9f" }}>[ OK ]</span>
             </div>
 
+            {sendError && (
+              <div style={{ border: "1px solid rgba(255,45,120,0.35)", padding: "1rem 1.25rem", background: "rgba(255,45,120,0.05)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem", color: "#ff2d78", marginBottom: "1rem", letterSpacing: "0.04em" }}>
+                &gt; TRANSMISSION FAILED — check your connection and retry
+              </div>
+            )}
             {submitted ? (
               <div className="terminal-fadein" style={{ border: "1px solid rgba(0,255,159,0.3)", padding: "2rem", background: "rgba(0,255,159,0.04)", fontFamily: "'JetBrains Mono', monospace" }}>
                 <div style={{ fontSize: "0.75rem", color: "#00ff9f", letterSpacing: "0.05em", marginBottom: "0.75rem" }}>&gt; TRANSMISSION CONFIRMED</div>
@@ -169,9 +203,9 @@ export function SecureChannel() {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <TerminalInput label="SENDER_ID:" value={name} onChange={setName} />
-                <TerminalInput label="RETURN_FREQ:" type="email" value={email} onChange={setEmail} />
-                <TerminalInput label="MESSAGE_BODY:" value={message} onChange={setMessage} multiline />
+                <TerminalInput label="NAME:" value={name} onChange={setName} />
+                <TerminalInput label="EMAIL:" type="email" value={email} onChange={setEmail} />
+                <TerminalInput label="MESSAGE:" value={message} onChange={setMessage} multiline />
                 <button
                   type="submit"
                   disabled={transmitting || !name || !email || !message}

@@ -268,7 +268,7 @@ export function SecureChannel() {
           &copy; 2026 BARKI, MUHAMMAD MAAZ · ALL RIGHTS RESERVED
         </div>
         <div style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "0.6rem", color: "#ff2d78", letterSpacing: "0.1em", textShadow: "0 0 6px #ff2d7844" }}>
-          BARKI_M · OPERATIVE PROFILE v2.6
+          MAAZ_BARKI · OPERATIVE PROFILE v2.6
         </div>
       </div>
     </section>

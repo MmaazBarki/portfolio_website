@@ -124,11 +124,11 @@ function BootSequence({ onComplete }: { onComplete: () => void }) {
 }
 
 /* ── Hero content ── */
-function HeroContent({ skipAnim }: { skipAnim: boolean }) {
+function HeroContent() {
   const navigate = useNavigate();
 
   return (
-    <div className={skipAnim ? undefined : "terminal-fadein"} style={{ width: "100%", textAlign: "center" }}>
+    <div className="terminal-fadein" style={{ width: "100%", textAlign: "center" }}>
       {/* Status badge */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
         <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#00ff9f", display: "inline-block", boxShadow: "0 0 8px #00ff9f, 0 0 16px #00ff9f40" }} />
@@ -232,13 +232,13 @@ function HeroContent({ skipAnim }: { skipAnim: boolean }) {
 const BOOT_SESSION_KEY = "heroBootDone";
 
 export function HeroSection() {
-  // Whether boot was already done BEFORE this mount (i.e. SPA navigation return).
-  // We capture this once in a ref so it never changes during the component’s life.
-  const wasAlreadyDone = useRef<boolean>(
-    sessionStorage.getItem(BOOT_SESSION_KEY) === "true"
+  // Read from sessionStorage on mount so SPA navigation back to "/" skips the
+  // boot animation. sessionStorage is cleared automatically on a true page
+  // reload or when the browser tab is closed, so the animation still plays
+  // on a fresh visit or hard refresh.
+  const [bootDone, setBootDone] = useState<boolean>(
+    () => sessionStorage.getItem(BOOT_SESSION_KEY) === "true"
   );
-
-  const [bootDone, setBootDone] = useState<boolean>(wasAlreadyDone.current);
 
   const handleBootComplete = () => {
     sessionStorage.setItem(BOOT_SESSION_KEY, "true");
@@ -250,15 +250,10 @@ export function HeroSection() {
       <CyberpunkGrid />
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(0,229,255,0.04) 0%, transparent 70%)", pointerEvents: "none" }} />
       <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1000, margin: "0 auto", display: "flex", justifyContent: "center" }}>
-        {!bootDone
-          ? <BootSequence onComplete={handleBootComplete} />
-          : <HeroContent skipAnim={wasAlreadyDone.current} />}
+        {!bootDone ? <BootSequence onComplete={handleBootComplete} /> : <HeroContent />}
       </div>
       {bootDone && (
-        <div
-          className={wasAlreadyDone.current ? undefined : "terminal-fadein"}
-          style={{ position: "absolute", bottom: "3.5rem", left: "50%", transform: "translateX(-50%)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6rem", color: "#4a4a6a", letterSpacing: "0.15em", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.4rem" }}
-        >
+        <div className="terminal-fadein" style={{ position: "absolute", bottom: "3.5rem", left: "50%", transform: "translateX(-50%)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6rem", color: "#4a4a6a", letterSpacing: "0.15em", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.4rem" }}>
           <span>USE NAVIGATION TO EXPLORE</span>
           <span style={{ animation: "blink 1.5s step-end infinite", color: "#00e5ff" }}>▼</span>
         </div>

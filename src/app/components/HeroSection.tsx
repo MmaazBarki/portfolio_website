@@ -170,11 +170,9 @@ function HeroContent() {
 
       {/* Bio */}
       <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "clamp(0.75rem, 1.3vw, 0.86rem)", color: "#c8c8e0", lineHeight: 1.95, marginBottom: "2.25rem", maxWidth: 580, margin: "0 auto 2.25rem" }}>
-        Builder of multi-agent AI systems. Backgrounds rooted in the humanities — approaches engineering
+        Builder of multi-agent AI systems. Backgrounds rooted in the humanities — I approach engineering
         with equal weight on the <span style={{ color: "#ff2d78" }}>why</span> and the human impact as
-        on the <span style={{ color: "#00e5ff" }}>how</span>. Led instruction for 300+ students, shipped
-        production-grade AI pipelines, and navigated government–academia–industry intersections at the
-        national level.
+        on the <span style={{ color: "#00e5ff" }}>how</span>. Experienced in research, education, and production-grade pipelines. I distill complex concepts into clear, engaging narratives — whether in code, writing, or conversation. Always on the lookout for the next challenge to tackle and the next system to build.
       </p>
 
       {/* CTAs */}

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-// ── EmailJS credentials ─────────────────────────────────────────────────────
-const EMAILJS_SERVICE_ID  = "service_47fxrxc";
-const EMAILJS_TEMPLATE_ID = "template_8mrrbcx";
-const EMAILJS_PUBLIC_KEY  = "vdUCZ4e85PydvSyvH";
-// ────────────────────────────────────────────────────────────────────────────
+// ── EmailJS credentials (from .env — never committed to git) ────────────────
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string;
+// ─────────────────────────────────────────────────────────────────────
 
 /* ── Matrix rain background ── */
 function MatrixBackground() {

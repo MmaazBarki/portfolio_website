@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 // ── PROJECT COVER IMAGES ────────────────────────────────────────────────────
-// To update: replace files at src/imports/cropped_cover.png / Chiron_cover.png
-import simulacraCover from "../../imports/cropped_cover.png";
-import chironCover from "../../imports/Chiron_cover.png";
+// To update: replace files at src/imports/
+import simulacraCover  from "../../imports/cropped_cover.png";
+import chironCover     from "../../imports/Chiron_cover.png";
+import lihCover        from "../../imports/ProductShowcase.png";
+import chatbotCover    from "../../imports/RomanUrdu_MedicalChatbot_cover.jpg";
 // ────────────────────────────────────────────────────────────────────────────
 
 /* ── Network node background ── */
@@ -125,6 +127,56 @@ const PROJECTS: Project[] = [
     coverImage: chironCover,
     coverAlt: "CHIRON — AI Experiment Architect",
   },
+  {
+    id: "lih",
+    classification: "Full-Stack Web Platform",
+    title: "LUMS INFO HUB",
+    tagline: "The unified information backbone for an entire university community.",
+    description: "LUMS Information Hub (LIH) is a full-stack MERN platform serving as the central information repository for LUMS students, faculty, and staff. Architected for scalability from the ground up — from MongoDB schema design to a responsive React frontend — with automated quality gates via Selenium to protect critical user flows in production.",
+    contributions: [
+      { area: "TECHNICAL LEAD", detail: "Sole architect of the full-stack system — owned requirements, schema design, REST API layer, media pipeline, and frontend implementation end-to-end" },
+      { area: "BACKEND", detail: "Designed scalable MongoDB schemas and implemented RESTful API endpoints using Node.js/Express; integrated Cloudinary for optimised media storage and delivery" },
+      { area: "QA", detail: "Devised an automated Selenium test suite covering authentication, content submission, and access-control critical user flows" },
+    ],
+    highlights: [
+      "Technical Lead — sole architect across the full MERN stack",
+      "Scalable MongoDB schema design with RESTful Node.js/Express API",
+      "Cloudinary integration for optimised media storage and delivery",
+      "Responsive React UI with component-driven architecture",
+      "Selenium automated test suite covering authentication and submission flows",
+    ],
+    techBadges: ["MongoDB", "Express.js", "React.js", "Node.js", "Selenium", "Cloudinary", "Git", "REST APIs"],
+    githubUrl: "https://github.com/MmaazBarki",
+    liveUrl: "https://github.com/MmaazBarki",
+    collaborators: [],
+    coverImage: lihCover,
+    coverAlt: "LUMS Information Hub — Full-Stack MERN Platform",
+  },
+  {
+    id: "chatbot",
+    classification: "AI · NLP · Healthcare",
+    title: "ROMAN-URDU MEDICAL CHATBOT",
+    tagline: "Speak in Urdu, get clinical-grade advice — no hallucinations, no guesswork.",
+    description: "A speech-first medical advisory pipeline that processes Urdu audio, transcribes it to Roman Urdu text, and routes it through a RAG-augmented LLM for health guidance. Purpose-built to serve communities where healthcare access and literacy barriers collide. Hallucinations are actively suppressed via Sentence-Transformer grounding, and model performance is validated with BERTScore at the diagnostic level.",
+    contributions: [
+      { area: "STT PIPELINE", detail: "Developed the Speech-to-Text medical pipeline that processes Urdu audio and converts it to Roman Urdu text for downstream NLP" },
+      { area: "RAG SYSTEM", detail: "Built the RAG system using LangChain and Sentence-Transformers to ground LLM responses in verified medical context, directly mitigating hallucinations" },
+      { area: "MODEL OPT.", detail: "Fine-tuned and optimised 1B/3B Llama and 7B Qwen models using Unsloth for memory-efficient training and faster inference on constrained hardware" },
+    ],
+    highlights: [
+      "End-to-end Urdu Speech-to-Text → Roman Urdu → LLM medical advisory pipeline",
+      "RAG system with LangChain + Sentence-Transformers for hallucination mitigation",
+      "1B/3B Llama and 7B Qwen fine-tuned via Unsloth — memory-efficient on constrained hardware",
+      "BERTScore evaluation for diagnostic accuracy and text fidelity",
+      "Designed for underserved communities with language and literacy barriers",
+    ],
+    techBadges: ["Python", "LangChain", "Unsloth", "Transformers", "Sentence-Transformers", "BERTScore", "RAG", "NLP"],
+    githubUrl: "https://github.com/MmaazBarki",
+    liveUrl: "https://github.com/MmaazBarki",
+    collaborators: [],
+    coverImage: chatbotCover,
+    coverAlt: "Roman-Urdu Medical Chatbot — Speech-to-Text AI Health Advisory",
+  },
 ];
 
 /* ── Small project card ── */
@@ -145,8 +197,6 @@ function SmallCard({
       onClick={onClick}
       style={{
         cursor: "pointer",
-        flex: "1 1 300px",
-        maxWidth: 520,
         display: "flex",
         flexDirection: "column",
         border: `1px solid ${isHovered ? "rgba(255,45,120,0.55)" : "rgba(255,45,120,0.15)"}`,
@@ -278,22 +328,24 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             {project.description}
           </p>
 
-          {/* Co-operatives */}
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.65rem", color: "#4a4a6a", marginBottom: "1.5rem", borderLeft: "1px solid rgba(0,229,255,0.15)", paddingLeft: "0.75rem" }}>
-            <span>CO-OPERATIVES: </span>
-            {project.collaborators.map((c, i) => (
-              <span key={c.name}>
-                <a href={c.url} target="_blank" rel="noopener noreferrer"
-                  style={{ color: "#00e5ff", textDecoration: "none", textShadow: "0 0 6px #00e5ff44", transition: "text-shadow 0.2s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.textShadow = "0 0 10px #00e5ff88"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.textShadow = "0 0 6px #00e5ff44"; }}
-                >
-                  {c.name}
-                </a>
-                {i < project.collaborators.length - 1 && <span style={{ color: "#4a4a6a" }}> · </span>}
-              </span>
-            ))}
-          </div>
+          {/* Co-operatives — only shown when the project has collaborators */}
+          {project.collaborators.length > 0 && (
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.65rem", color: "#4a4a6a", marginBottom: "1.5rem", borderLeft: "1px solid rgba(0,229,255,0.15)", paddingLeft: "0.75rem" }}>
+              <span>CO-OPERATIVES: </span>
+              {project.collaborators.map((c, i) => (
+                <span key={c.name}>
+                  <a href={c.url} target="_blank" rel="noopener noreferrer"
+                    style={{ color: "#00e5ff", textDecoration: "none", textShadow: "0 0 6px #00e5ff44", transition: "text-shadow 0.2s" }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.textShadow = "0 0 10px #00e5ff88"; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.textShadow = "0 0 6px #00e5ff44"; }}
+                  >
+                    {c.name}
+                  </a>
+                  {i < project.collaborators.length - 1 && <span style={{ color: "#4a4a6a" }}> · </span>}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Contributions */}
           <div style={{ marginBottom: "1.5rem", borderLeft: "2px solid rgba(0,229,255,0.2)", paddingLeft: "1rem" }}>
@@ -395,8 +447,13 @@ export function DataArchives() {
           </div>
         </div>
 
-        {/* Cards grid — keeps position context so scale transform doesn't clip */}
-        <div style={{ display: "flex", gap: "1.75rem", flexWrap: "wrap", justifyContent: "center", position: "relative" }}>
+        {/* Cards grid: 2 per row on wide screens, 1 on narrow */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(420px, 1fr))",
+          gap: "1.75rem",
+          position: "relative",
+        }}>
           {PROJECTS.map(p => (
             <SmallCard
               key={p.id}

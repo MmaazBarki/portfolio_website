@@ -229,19 +229,17 @@ function HeroContent() {
   );
 }
 
-const BOOT_SESSION_KEY = "heroBootDone";
+// Module-level flag: false on every fresh page load (JS bundle re-executes),
+// but stays true across React Router SPA navigations within the same session.
+let _bootPlayedThisSession = false;
 
 export function HeroSection() {
-  // Read from sessionStorage on mount so SPA navigation back to "/" skips the
-  // boot animation. sessionStorage is cleared automatically on a true page
-  // reload or when the browser tab is closed, so the animation still plays
-  // on a fresh visit or hard refresh.
-  const [bootDone, setBootDone] = useState<boolean>(
-    () => sessionStorage.getItem(BOOT_SESSION_KEY) === "true"
-  );
+  // Initialise from the module flag so SPA navigation back skips the boot,
+  // but a real reload always starts fresh.
+  const [bootDone, setBootDone] = useState<boolean>(_bootPlayedThisSession);
 
   const handleBootComplete = () => {
-    sessionStorage.setItem(BOOT_SESSION_KEY, "true");
+    _bootPlayedThisSession = true;
     setBootDone(true);
   };
 
